@@ -1,0 +1,88 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Player
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings: []
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 1
+      enableTightPacking: 1
+      enableAlphaDilation: 0
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 102900000, guid: 572405d8a9e19af45876d2aaf8c1b588, type: 3}
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: cb026d60f07d6c04d924178b8040ded2, type: 2}
+  - {fileID: 21300000, guid: a6471cf4430157240b14bd9453f1d5d9, type: 2}
+  - {fileID: 21300000, guid: 58cc0814e4dbaa146b3b71122e87c22c, type: 2}
+  - {fileID: 21300000, guid: 4c08dff0036ca89488feaf566f2d2358, type: 2}
+  - {fileID: 21300000, guid: d33b3607a299bb94ba9ff34876e67008, type: 2}
+  - {fileID: 21300000, guid: a2d9c43afe2640b44b2763d3c966d852, type: 2}
+  - {fileID: 21300000, guid: d71713908ae890048af4a2499cad2e94, type: 2}
+  - {fileID: 21300000, guid: 74b321a11a89b7049a0580432257b354, type: 2}
+  - {fileID: 21300000, guid: 67cf2cd86013b1d47bea2567a0cbaf1b, type: 2}
+  - {fileID: 21300000, guid: d3ce0bb7ddf1e53448a5ab572f27623b, type: 2}
+  - {fileID: 21300000, guid: 840ea9d95161398408284f502b2c2ed4, type: 2}
+  - {fileID: 21300000, guid: 6b630d3e1ca58b849b80bc26f3ff31c1, type: 2}
+  - {fileID: 21300000, guid: 9c84d14a59836df41b1e9d29e32d8aae, type: 2}
+  - {fileID: 21300000, guid: eea98b6b991d24e48a37cf552fd6c99e, type: 2}
+  - {fileID: 21300000, guid: c5cf4d3b01d3f8c41928177cb0c30f1b, type: 2}
+  - {fileID: 21300000, guid: 5bbcf46d03ed17645a82efa987e5950f, type: 2}
+  - {fileID: 21300000, guid: 8b575b99470c6744da6995315f67e975, type: 2}
+  - {fileID: 21300000, guid: ce7aa4df4783cbf44b44f70b7d67fcc8, type: 2}
+  - {fileID: 21300000, guid: bba0419b2f7cde540a9bd0d114f58e12, type: 2}
+  - {fileID: 21300000, guid: d5b32f5e8ed11e542805e4e6bdb8c46e, type: 2}
+  - {fileID: 21300000, guid: ebd09e1f65759444989c20d8774bed78, type: 2}
+  - {fileID: 21300000, guid: 7ff19b28e2835bc45b3c74cb3ec3e7e1, type: 2}
+  m_PackedSpriteNamesToIndex:
+  - CircusCharlieSprite_26
+  - CircusCharlieSprite_27
+  - CircusCharlieSprite_20
+  - CircusCharlieSprite_36
+  - CircusCharlieSprite_21
+  - CircusCharlieSprite_35
+  - CircusCharlieSprite_22
+  - CircusCharlieSprite_34
+  - CircusCharlieSprite_23
+  - CircusCharlieSprite_28
+  - CircusCharlieSprite_29
+  - CircusCharlieSprite_19
+  - CircusCharlieSprite_18
+  - CircusCharlieSprite_15
+  - CircusCharlieSprite_14
+  - CircusCharlieSprite_17
+  - CircusCharlieSprite_16
+  - CircusCharlieSprite_13
+  - CircusCharlieSprite_6
+  - CircusCharlieSprite_7
+  - CircusCharlieSprite_4
+  - CircusCharlieSprite_5
+  m_RenderDataMap: {}
+  m_Tag: Player
+  m_IsVariant: 0
