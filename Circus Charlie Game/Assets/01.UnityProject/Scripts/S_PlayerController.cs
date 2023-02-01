@@ -54,9 +54,9 @@ public class S_PlayerController : MonoBehaviour
         {//Left Max Speed
             rigid.velocity = new Vector2(maxSpeed * (-1), rigid.velocity.y);
         }
+        Debug.DrawRay(rigid.position, Vector2.down, new Color(0,1,0));
         
     }
-
     //! 플레이어가 충돌했을때
     void OnCollisionEnter2D(Collision2D collision){
         
@@ -79,13 +79,21 @@ public class S_PlayerController : MonoBehaviour
             }
         }
         else if(collision.gameObject.tag == "Obstacle"){
-            OnDamaged(collision.transform.position);
+            rigid.AddForce(Vector2.up*5,ForceMode2D.Impulse);
+            
+            anim.SetTrigger("isDead");
+            //OnDamaged(collision.transform.position);
         }
         else if(collision.gameObject.tag == "Item")
         {
             // 스코어 증가
         }
+        else if(collision.gameObject.tag == "Platform")
+        {
+            anim.SetBool("isJumping",false);
+        }
     }
+    
     void OnDamaged(Vector2 targetPos){
         // Change Layer (Immortal Active)
         

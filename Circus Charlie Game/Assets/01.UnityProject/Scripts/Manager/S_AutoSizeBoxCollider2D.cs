@@ -24,7 +24,7 @@ public class S_AutoSizeBoxCollider2D : MonoBehaviour
         else
         {
             objSize_.x = rectTransform_.sizeDelta.x;
-            objSize_.y = 1;//rectTransform_.sizeDelta.y;
+            objSize_.y = rectTransform_.sizeDelta.y;
         }
         
         boxCollider_.size = objSize_;
