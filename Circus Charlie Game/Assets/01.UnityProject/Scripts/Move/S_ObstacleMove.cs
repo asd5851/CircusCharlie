@@ -11,7 +11,6 @@ public class S_ObstacleMove : MonoBehaviour
     {
        item = gameObject.FindChildObj("Item");
        int a = Random.Range(0,3);
-        Debug.Log($"a = {a}");
         if(a==0){
            item.SetActive(false); 
         }

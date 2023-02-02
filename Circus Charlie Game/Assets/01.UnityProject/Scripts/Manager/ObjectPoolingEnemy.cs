@@ -2,11 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ObjectPooling : MonoBehaviour
+public class ObjectPoolingEnemy : MonoBehaviour
 {
-    // instance라는 변수를 static으로 선언을 하여 다른 오브젝트 안의 스크립트 에서도 instatnce
-    // 를 불러올 수 있게 한다.
-    public static ObjectPooling instance; // 오브젝트 풀링 사용할 instance
+    public static ObjectPoolingEnemy instance; // 오브젝트 풀링 사용할 instance
    GameObject Object_Prefab; // 받아올 게임 오브젝트
    bool b_enemy;
    // 적 총을 담아둘 큐를 선언한다.
@@ -14,8 +12,7 @@ public class ObjectPooling : MonoBehaviour
    
    private void Awake(){
     
-    //Object_Prefab = Resources.Load("Prefabs/EnemyMonkey")as GameObject;
-    Object_Prefab = Resources.Load("Prefabs/ObstacleA")as GameObject;
+    Object_Prefab = Resources.Load("Prefabs/EnemyMonkey")as GameObject;
     instance = this;
     Initiallize();
    }

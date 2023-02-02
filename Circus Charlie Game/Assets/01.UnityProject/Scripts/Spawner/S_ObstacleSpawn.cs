@@ -5,8 +5,10 @@ using UnityEngine;
 public class S_ObstacleSpawn : MonoBehaviour
 {
     //public GameObject player;
-    float delay_cur = 0;
-    float delay_max = 5;
+    private float delay_cur = 0;
+    private float delay_max = 6;
+    public GameObject player;
+    private const int PLAYER_DISTANCE = 20;
     void Start()
     {
         
@@ -15,6 +17,7 @@ public class S_ObstacleSpawn : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        gameObject.SetLocalPos(player.transform.position.x+PLAYER_DISTANCE,2,0);
         Delay();
         
     }

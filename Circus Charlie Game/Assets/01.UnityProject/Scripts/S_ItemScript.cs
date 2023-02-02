@@ -5,6 +5,7 @@ using UnityEngine;
 public class S_ItemScript : MonoBehaviour
 {
     // Start is called before the first frame update
+    //GameManager gameManager;
     void Start()
     {
         
@@ -22,6 +23,7 @@ public class S_ItemScript : MonoBehaviour
         Debug.Log("아이템습득");
         if(collision.gameObject.tag == "Player")
         {
+            GameManager.instance.GetScore();
             gameObject.SetActive(false);
         }
     }

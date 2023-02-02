@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class S_EnemyMove : MonoBehaviour
+public class S_BlueEnemyMove : MonoBehaviour
 {
     Rigidbody2D rigid;
-    private const int ENEMY_SPEED = 5;
+    private const int ENEMY_SPEED = 10;
     void Start()
     {
         rigid = GetComponent<Rigidbody2D>();
