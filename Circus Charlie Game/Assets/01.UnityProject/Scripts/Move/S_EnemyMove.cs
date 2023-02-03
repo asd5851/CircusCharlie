@@ -15,5 +15,9 @@ public class S_EnemyMove : MonoBehaviour
     void Update()
     {
          rigid.velocity = new Vector2(-1*ENEMY_SPEED, rigid.velocity.y);
+         if(transform.position.x < 0)
+        {
+            ObjectPoolingEnemy.ReturnObject(gameObject);
+        }
     }
 }

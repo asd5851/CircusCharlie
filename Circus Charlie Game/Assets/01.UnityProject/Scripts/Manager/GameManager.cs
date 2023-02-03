@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -12,11 +13,8 @@ public class GameManager : MonoBehaviour
     private const string UI_OBJS = "UiObjs";
     private const string SCORE_TEXT_OBJ = "ScoreTxt";
     private const string TOTAL_SCORE_TEXT_OBJ = "TotalScoreTxt";
-
     private const string STAGE_TEXT_OBJ = "StageTxt";
     private const string GAME_OVER_UI_OBJ = "GameOverUI";
-    static float totalScore = default;
-    static int curLevel = 1;
     private float curScore = default;
     public bool isGameOver = false;
 
@@ -34,12 +32,7 @@ public class GameManager : MonoBehaviour
             gameOverUi = uiObjs_.FindChildObj(GAME_OVER_UI_OBJ);
             TotalscoreTxtObj = uiObjs_.FindChildObj(TOTAL_SCORE_TEXT_OBJ);
 
-            Debug.Log($"스코어 오브젝트 찾기 : {scoreTxtObj}");
-            //Debug.Log($"스테이지 오브젝트 찾기 : {stageTxtObj}");
-
-
             curScore = 0;
-            totalScore = 0;
         }   // if : 게임 매니저가 존재하지 않는 경우 변수에 할당 및 초기화
         else
         {
@@ -54,14 +47,14 @@ public class GameManager : MonoBehaviour
         if(isGameOver == true){return;}
         curScore += 100;
     }
+
+    //! 시간초가 지날때 마다 스코어를 +1 해준다.
     public void AddScore()
     {
         if(isGameOver == true){return;}
         curScore += Time.deltaTime;
-        totalScore = curScore;
-        Debug.Log($"{scoreTxtObj}");
         scoreTxtObj.SetTmpText($"Score : {Mathf.FloorToInt(curScore)}");
-        TotalscoreTxtObj.SetTmpText($"TotalScore : {Mathf.FloorToInt(totalScore)}");
+        TotalscoreTxtObj.SetTmpText($"TotalScore : {Mathf.FloorToInt(GScoreFunc.totalScore)+Mathf.FloorToInt(curScore)}");
     }
 
     //! 스테이지를 넘어간다.
@@ -70,32 +63,49 @@ public class GameManager : MonoBehaviour
         if(isGameOver)
             return;
         // 현재 스테이지 점수를 토탈 점수에 더하고 현재 점수를 초기화
-        curLevel += 1;
-        totalScore = curScore;
+        GScoreFunc.totalScore = curScore;
+        GScoreFunc.stageNumber++;
         curScore = 0;
-        GFunc.LoadScene("03.PlayScene2");
-    }
-    //! 타이틀 화면으로 넘어간다.
-    public void GoTitleScene()
-    {
-        GFunc.LoadScene("01.TitleScene");
+        GFunc.LoadScene("0"+(GScoreFunc.stageNumber+1)+".PlayScene"+GScoreFunc.stageNumber);
     }
 
+    //! 스테이지를 체크해서 스테이지 텍스트를 업데이트해준다.
+    private void StageCheck()
+    {
+        if(SceneManager.GetActiveScene().name == "02.PlayScene1")
+        {
+            stageTxtObj.SetTmpText($"Stage - 1");
+            GScoreFunc.stageNumber = 1;
+
+        }
+        else if(SceneManager.GetActiveScene().name == "03.PlayScene2")
+        {
+            stageTxtObj.SetTmpText($"Stage - 2");
+            GScoreFunc.stageNumber = 2;
+        }
+    }
+
+    //! 플레이어가 죽었을 경우 게임오버 씬을 불러온다..
     public void PlayerDie()
     {
         isGameOver = true;
-        gameOverUi.SetActive(true);
+        GScoreFunc.totalScore = 0;
+        GScoreFunc.stageNumber = 1;
+        Invoke("GameOver",2f);
+        //gameOverUi.SetActive(true);
+    }
+    private void GameOver()
+    {
+        GFunc.LoadScene("05.GameOverScene");
     }
     void Start()
     {
-        Debug.Log($"스테이지 오브젝트 찾기 : {stageTxtObj}");
-        stageTxtObj.SetTmpText($"Stage - {curLevel}");
+        StageCheck();
     }
     
     
     void Update()
     {
-        AddScore();
-        
+        AddScore();      
     }
 }

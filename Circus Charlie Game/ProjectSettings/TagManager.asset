@@ -16,8 +16,8 @@ TagManager:
   - UI
   - Platform
   - 
-  - 
-  - 
+  - Obstacle
+  - Enemy
   - Player
   - PlayerDamaged
   - 

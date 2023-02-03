@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class S_ObstacleMove : MonoBehaviour
 {
-    private float height = default;
-    
     GameObject item ;
     void Start()
     {

@@ -19,7 +19,6 @@ public static partial class GFunc
             if (searchTarget.name.Equals(objName_))
             {
                 searchResult = searchTarget;
-                Debug.Log($"찾은거야 : ? : {searchResult}");
                 return searchResult;
             }
             else

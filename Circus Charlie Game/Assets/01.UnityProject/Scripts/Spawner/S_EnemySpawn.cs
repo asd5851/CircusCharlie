@@ -6,7 +6,7 @@ public class S_EnemySpawn : MonoBehaviour
 {
     // Start is called before the first frame update
     float delay_cur = 0;
-    float delay_max = 10;
+    float delay_max = 3;
     private const int PLAYER_DISTANCE = 20;
     public GameObject player;
     void Start()
@@ -33,12 +33,12 @@ public class S_EnemySpawn : MonoBehaviour
         Debug.Log($"{randomMonkey}");
         if(randomMonkey < 2)
         {
-            var enemyMonkey = ObjectPoolingBlueEnemy.GetObject();
+            var enemyMonkey = ObjectPoolingEnemy.GetObject();
             enemyMonkey.transform.position = transform.position;
         }
         else
         {
-            var enemyMonkey = ObjectPoolingEnemy.GetObject();
+            var enemyMonkey = ObjectPoolingBlueEnemy.GetObject();
             enemyMonkey.transform.position = transform.position;
         }
         

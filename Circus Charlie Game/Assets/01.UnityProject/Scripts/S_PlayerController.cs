@@ -7,15 +7,12 @@ public class S_PlayerController : MonoBehaviour
     // Start is called before the first frame update
     Rigidbody2D rigid= default;
     Animator anim= default;
-    Animator animLion= default;
     Image img= default;
     CircleCollider2D capsule_pl= default;
     BoxCollider2D lion = default;
     public float maxSpeed;
     public float jumpPower;
     public bool isjump = false;
-    private float timer = default;
-    private int waitingTime =default;
     private bool lionCheck = false;
 
     // Mobile Key Var
@@ -24,8 +21,6 @@ public class S_PlayerController : MonoBehaviour
     public bool inputJump = false;
     void Start()
     {
-        timer = 0f;
-        waitingTime = 5;
         rigid = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         img = GetComponent<Image>();
@@ -48,18 +43,13 @@ public class S_PlayerController : MonoBehaviour
     }
     public void Move()
     {
-        if(inputJump && !isjump)
+        if((inputJump  || Input.GetButtonDown("Jump")) && !isjump)
         {
             isjump = true;
             rigid.AddForce(Vector2.up*jumpPower, ForceMode2D.Impulse);
             inputJump=false;
-        }
-        if (Input.GetButtonDown("Jump") && isjump == false)
-        {       
-            isjump = true;
-            rigid.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
             anim.SetBool("isJumping",true);
-        }   // if : 점프키를 눌렀을 경우
+        }       // if : 점프키를 눌렀을 경우
         //Stop Speed
         if (Input.GetButtonUp("Horizontal"))
         {
@@ -128,6 +118,7 @@ public class S_PlayerController : MonoBehaviour
         }   // if : 플랫폼에 닿아야 점프가 가능하다.
         else if(collision.gameObject.tag == "Finish")
         {
+            gameObject.layer = 11;
             anim.SetTrigger("isFinish");
             Invoke("NextStage",4f);
         }   // if : 마지막 지점에 닿으면 다음스테이지로 넘어간다.
@@ -146,8 +137,6 @@ public class S_PlayerController : MonoBehaviour
         if(lionCheck)
             lion.enabled = false;
         Die();
-        //anim.SetTrigger("doDamaged");
-        //Invoke("OffDamaged",1);
     }
     
     void Die()
