@@ -8,8 +8,9 @@ public class S_BlueEnemyMove : MonoBehaviour
     Animator anim;
     bool isJump = false;
     private float delay_cur = 0;
-    private float delay_max = 3;
+    private const float DELAY_MAX = 3;
     private const int ENEMY_SPEED = 10;
+    private const int ENEMY_JUMP_POWER = 7;
     void Start()
     {
         rigid = GetComponent<Rigidbody2D>();
@@ -32,14 +33,14 @@ public class S_BlueEnemyMove : MonoBehaviour
         int enemyJump = default;
         enemyJump =  Random.RandomRange(0,4);
         delay_cur = delay_cur + Time.deltaTime;
-        if(delay_max > delay_cur)
+        if(DELAY_MAX > delay_cur)
         {
             return;
         }
         delay_cur = 0;
         if(enemyJump == 1 && !isJump)
         {
-            rigid.AddForce(Vector2.up * 7, ForceMode2D.Impulse);
+            rigid.AddForce(Vector2.up * ENEMY_JUMP_POWER, ForceMode2D.Impulse);
             anim.SetBool("isJumping",true);
             isJump = true;
         }

@@ -11,7 +11,7 @@ public class S_CameraMove : MonoBehaviour
     }
 
     void Update()
-    {       
+    {   // 카메라의 위치를 플레이어로 고정시킨다.
         transform.position = new Vector3(player.transform.position.x, 0, transform.position.z);
     }
 }

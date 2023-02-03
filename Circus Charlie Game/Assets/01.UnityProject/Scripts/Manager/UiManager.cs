@@ -8,9 +8,11 @@ public class UiManager : MonoBehaviour
     public void GoTitleScene()
     {
         GFunc.LoadScene("01.TitleScene");
-    }
+    }       // GoTitleScene
+
+    //! 게임오버 화면으로 넘어간다.
     public void GoGameOverScene()
     {
         GFunc.LoadScene("05.GameOverScene");
-    }
+    }       // GoGameOverScene
 }

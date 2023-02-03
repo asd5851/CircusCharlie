@@ -12,7 +12,7 @@ public class ObjectPoolingEnemy : MonoBehaviour
    
    private void Awake(){
     
-    Object_Prefab = Resources.Load("Prefabs/EnemyMonkey")as GameObject;
+    Object_Prefab = Resources.Load("Prefabs/GameObjPrefabs/EnemyMonkey")as GameObject;
     instance = this;
     Initiallize();
    }

@@ -83,7 +83,7 @@ public static partial class GFunc
             obj_.transform.localPosition + new Vector3(x, y, z);
     }       // AddLocalPos()
 
-    //! Ʈ�������� ����ؼ� ������Ʈ�� �����̴� �Լ�
+    //! Ʈ�������� ����ؼ�? ������Ʈ�� �����̴� �Լ�
     public static void Translate(this Transform transform_, Vector2 moveVector)
     {
         transform_.Translate(moveVector.x, moveVector.y, 0f);

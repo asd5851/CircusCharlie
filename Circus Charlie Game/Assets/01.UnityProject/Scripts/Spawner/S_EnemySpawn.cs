@@ -21,6 +21,8 @@ public class S_EnemySpawn : MonoBehaviour
         player.transform.position.y,0);
         Delay();
     }
+
+    //! 적을 스폰하는 시간을 설정한 후 일반적, 강한적을 랜덤으로 생성한다.
      void Delay()
     {
         int randomMonkey = Random.RandomRange(0,3);
@@ -30,7 +32,6 @@ public class S_EnemySpawn : MonoBehaviour
             return;
         }
         delay_cur = 0;
-        Debug.Log($"{randomMonkey}");
         if(randomMonkey < 2)
         {
             var enemyMonkey = ObjectPoolingEnemy.GetObject();

@@ -15,7 +15,7 @@ public class ObjectPooling : MonoBehaviour
    private void Awake(){
     
     //Object_Prefab = Resources.Load("Prefabs/EnemyMonkey")as GameObject;
-    Object_Prefab = Resources.Load("Prefabs/ObstacleA")as GameObject;
+    Object_Prefab = Resources.Load("Prefabs/GameObjPrefabs/ObstacleA")as GameObject;
     instance = this;
     Initiallize();
    }

@@ -10,6 +10,7 @@ public class S_PlayerController : MonoBehaviour
     Image img= default;
     CircleCollider2D capsule_pl= default;
     BoxCollider2D lion = default;
+    S_BallController ball = default;
     public float maxSpeed;
     public float jumpPower;
     public bool isjump = false;
@@ -19,6 +20,7 @@ public class S_PlayerController : MonoBehaviour
     public bool inputLeft = false;
     public bool inputRight = false;
     public bool inputJump = false;
+    bool checkBall = false;
     void Start()
     {
         rigid = GetComponent<Rigidbody2D>();
@@ -41,13 +43,16 @@ public class S_PlayerController : MonoBehaviour
     {
         Move();
     }
+
+    //! 플레이어의 점프를 담당하는 함수
     public void Move()
     {
         if((inputJump  || Input.GetButtonDown("Jump")) && !isjump)
         {
+
             isjump = true;
+            checkBall = true;
             rigid.AddForce(Vector2.up*jumpPower, ForceMode2D.Impulse);
-            inputJump=false;
             anim.SetBool("isJumping",true);
         }       // if : 점프키를 눌렀을 경우
         //Stop Speed
@@ -76,7 +81,6 @@ public class S_PlayerController : MonoBehaviour
             }
             //PC
             float h = Input.GetAxisRaw("Horizontal");
-            //rigid.velocity = new Vector2(h*v_Speed,transform.position);
             rigid.AddForce(Vector2.right * h, ForceMode2D.Impulse);
 
                 // x축의 속도가 maxspeed보다 빠르다면
@@ -122,23 +126,40 @@ public class S_PlayerController : MonoBehaviour
             anim.SetTrigger("isFinish");
             Invoke("NextStage",4f);
         }   // if : 마지막 지점에 닿으면 다음스테이지로 넘어간다.
+        else if(collision.gameObject.tag == "Ball") //&& checkBall == false)
+        {
+            Debug.Log("붙엇니?");
+            isjump = false;
+            float x = collision.gameObject.GetComponent<RectTransform>().anchoredPosition.x;
+            float y = collision.gameObject.GetComponent<RectTransform>().anchoredPosition.y;
+            gameObject.GetComponent<RectTransform>().anchoredPosition = new Vector2(x,y+100);
+            collision.gameObject.transform.SetParent(gameObject.transform);
+            //checkBall = true;
+           
+
+        }
     }
+
+    //! 다음스테이지로 넘어간다.
     void NextStage()
     {
         GameManager.instance.NextStage();
     }
+
+    //! 장애물이나 적에게 닿았을 경우
     void OnDamaged(Vector2 targetPos){
         // Change Layer (Immortal Active)
         gameObject.layer = 11;
         // ReactForce
         int dirc = transform.position.x - targetPos.x > 0 ? 1:-1;
-        rigid.AddForce(new Vector2(dirc,1)*10,ForceMode2D.Impulse);
-        capsule_pl.enabled = false;
+        rigid.AddForce(new Vector2(dirc,1)*10,ForceMode2D.Impulse); // 위로 튀어오른다.
+        capsule_pl.enabled = false; // 플레이어의 콜라이더 해제
         if(lionCheck)
             lion.enabled = false;
         Die();
     }
     
+    //! 플레이어가 죽었을 경우 게임매니저의 PlayerDie호출
     void Die()
     {
         GameManager.instance.PlayerDie();

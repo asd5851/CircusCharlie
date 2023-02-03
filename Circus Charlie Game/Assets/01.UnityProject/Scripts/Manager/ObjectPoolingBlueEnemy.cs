@@ -12,7 +12,7 @@ public class ObjectPoolingBlueEnemy : MonoBehaviour
    
    private void Awake(){
     
-    Object_Prefab = Resources.Load("Prefabs/BlueMonkey")as GameObject;
+    Object_Prefab = Resources.Load("Prefabs/GameObjPrefabs/BlueMonkey")as GameObject;
     instance = this;
     Initiallize();
    }

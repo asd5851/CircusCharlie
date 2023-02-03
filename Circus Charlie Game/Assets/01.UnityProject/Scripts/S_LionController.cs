@@ -10,7 +10,7 @@ public class S_LionController : MonoBehaviour
     Animator anim;
     void Start()
     {
-        // 부모 오브젝트의 컴포넌트 찾기
+        // 부모 오브젝트의 컴포넌트 찾기 (플레이어의 오브젝트의 스크립트를 찾는다.)
         player = gameObject.GetComponentInParent<S_PlayerController>();
     }
 
@@ -23,6 +23,7 @@ public class S_LionController : MonoBehaviour
     {
         if(collision.tag == "Platform")
         {
+            // 플레이어 오브젝트의 스크립트의 isjump를 false로 변경한다.
             player.isjump = false;
         }
     }

@@ -9,7 +9,6 @@ public class UIButtonManager : MonoBehaviour
     void Start()
     {
         playerScript = GameObject.FindGameObjectWithTag("Player").GetComponent<S_PlayerController>();
-        Debug.Log(playerScript.inputJump);
     }
     public void LeftDown()
     {
